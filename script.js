@@ -35,6 +35,7 @@ function lampOnclickHodler() {
 function reactionTimeTimer() {
     if (firstClick == true) {
         startTime = new Date().getTime();
+        console.log(startTime, "<-- starttime i ms");
 
     }
     else {
@@ -42,15 +43,14 @@ function reactionTimeTimer() {
         let spentMilliseconds = Math.floor(finishTime - startTime);
         spentSeconds = spentMilliseconds / 1000;
 
+        console.log(finishTime, "<-- finishTime i ms");
+        console.log(spentSeconds, "<-- spentSeconds");
+
         finishTime = 0;
         startTime = 0;
     }
     firstClick = !firstClick;
-
     console.log(firstClick, "<-- firstClick");
-    console.log(startTime, "<-- starttime i ms");
-    console.log(finishTime, "<-- finishTime i ms");
-    console.log(spentSeconds, "<-- spentSeconds");
 }
 
 
