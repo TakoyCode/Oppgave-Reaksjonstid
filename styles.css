@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(69, 69, 69);
+    margin: 20px;
+}
+
+#LampGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(5, 100px);
+    gap: 20px;
+}
+
+.lamp {
+    border-radius: 50%;
+    background-color: lightgray;
+}
+
+.lightOn {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timertext {
+    font-size: 400%;
+    margin: 50px;
+}
