@@ -3,15 +3,15 @@ let app = document.getElementById('app');
 let html = ``;
 
 let selectedLampIndex = 0;
+
 let firstClick = true;
 let startTime = 0;
 let finishTime = 0;
 let spentSeconds = 0;
 
 //View
-/* console.log(selectedLampIndex); */
-
 randomizeLampIndex();
+
 function updateView() {
     let html = /*HTML*/ `
     
@@ -25,13 +25,23 @@ function updateView() {
     turnOnSelectedLamp();
 }
 
-
-//Controller
-function lampOnclickHodler() {
-    reactionTimeTimer();
-    randomizeLampIndex();
+function turnOnSelectedLamp() {
+    document.getElementById('lamp' + selectedLampIndex).classList.add('lightOn');
+    document.getElementById('lamp' + selectedLampIndex).onclick = function () { reactionTimeTimer(); randomizeLampIndex(); };
 }
 
+function createCirclesHtml() {
+    for (let counter = 1; counter <= 25; counter++) {
+        document.getElementById('LampGrid').innerHTML += /*HTML*/ `
+
+        <div id="lamp${counter}" class="lamp"></div>
+
+        `;
+    }
+}
+
+
+//Controller
 function reactionTimeTimer() {
     if (firstClick == true) {
         startTime = new Date().getTime();
@@ -51,6 +61,8 @@ function reactionTimeTimer() {
     }
     firstClick = !firstClick;
     console.log(firstClick, "<-- firstClick");
+
+    updateView();
 }
 
 
@@ -63,20 +75,4 @@ function randomizeLampIndex() {
         selectedLampIndex = Math.floor(Math.random() * (max - min) + min);
     }
     updateView();
-}
-
-
-function createCirclesHtml() {
-    for (let counter = 1; counter <= 25; counter++) {
-        document.getElementById('LampGrid').innerHTML += /*HTML*/ `
-
-        <div id="lamp${counter}" class="lamp"></div>
-
-        `;
-    }
-}
-
-function turnOnSelectedLamp() {
-    document.getElementById('lamp' + selectedLampIndex).classList.add('lightOn');
-    document.getElementById('lamp' + selectedLampIndex).onclick = function () { lampOnclickHodler() };
 }
