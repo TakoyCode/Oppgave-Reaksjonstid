@@ -71,7 +71,7 @@ function randomizeLampIndex() {
     let min = Math.ceil(1);
     let max = Math.floor(26);
     let lastSelectedLamp = selectedLampIndex;
-    /
+
     while (lastSelectedLamp == selectedLampIndex) {
         selectedLampIndex = Math.floor(Math.random() * (max - min) + min);
     }
